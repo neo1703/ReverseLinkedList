@@ -18,8 +18,7 @@ static node newNode(Object d)
 	newnode.data = d; 
 	newnode.next = null; 
 	return newnode; 
-} 
-
+}
 static node reverse(node head, node prev) 
 { 
 
@@ -33,7 +32,7 @@ static node reverse(node head, node prev)
 
 	// Reversing nodes until curr node's value 
 	// turn odd or Linked list is fully traversed 
-	while (curr != null && ((int)curr.data) == 0) 
+	while (curr != null && curr.data % 2 == 0) 
 	{ 
 		temp = curr.next; 
 		curr.next = prev; 
@@ -46,10 +45,13 @@ static node reverse(node head, node prev)
 	if (curr != head) 
 	{ 
 		head.next = curr; 
+
+		// Recur for the remaining linked list 
 		curr = reverse(curr, null); 
 		return prev; 
 	} 
 
+	// Simply iterate over the odd value nodes 
 	else
 	{ 
 		head.next = reverse(head.next, head); 
